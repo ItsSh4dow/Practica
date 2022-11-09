@@ -3,7 +3,6 @@ package com.josec.listaDoble;
 public class ListaEnlazada {
     Nodo inicio, fin;
     int length = 0;
-
     public ListaEnlazada() { //  Si no tenemos nada, apunta hacia null
         this.inicio = null;
         this.fin = null;
@@ -69,5 +68,43 @@ public class ListaEnlazada {
                 }
             } while( cambio );
         }
+    }
+
+    public int [] getProcessArray(){
+        if (length >= 2){
+            Nodo recorrer = inicio;
+            int array [] = new int[length];
+                for(int i = 0; recorrer != null; i++){
+                    array[i] = recorrer.procesos;
+                    recorrer = recorrer.siguiente;
+            }
+            return array;
+        }
+        return null;
+    }
+
+    public int [] getRamArray(){
+        if (length >= 2){
+            Nodo recorrer = inicio;
+            int array [] = new int[length];
+            for(int i = 0; recorrer != null; i++){
+                array[i] = recorrer.ram;
+                recorrer = recorrer.siguiente;
+            }
+            return array;
+        }
+        return null;
+    }
+    public int [] getProcessorsArray(){
+        if (length >= 2){
+            Nodo recorrer = inicio;
+            int array [] = new int[length];
+            for(int i = 0; recorrer != null; i++){
+                array[i] = recorrer.procesadores;
+                recorrer = recorrer.siguiente;
+            }
+            return array;
+        }
+        return null;
     }
 }

@@ -1,26 +1,22 @@
 package com.josec.practica.hilos;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class TareaTopSecret implements Runnable{
+    int [] times = {1,2,3};
+    int time;
+    int proceso;
+    TareaTopSecret(int proceso){
+        this.proceso = proceso;
+    }
     @Override
     public void run() {
+        time = (int) (Math.random() * 3);
         try{
-            System.out.println("Hola soy el proceso: " + Thread.currentThread());
-            Thread.sleep(ThreadLocalRandom.current().nextInt(1000,3000));
+            Thread.sleep((long) times[time] * 1000);
+            System.out.println("Hola soy el proceso: " + proceso +"\nMe quedare dormido " + times[time] +" minutos");
+
         }catch (InterruptedException e){
             throw new RuntimeException(e);
         }
     }
-}
-/*    // vamos a ponernos a dormir un numero random entre 1 y 3
-    public synchronized void tarea() {
-        try {
-            System.out.println("Hola soy el proceso " + Thread.);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
 
-        // Thread.sleep(ThreadLocalRandom.current().nextInt(500,2000));
-        // dormidos el hilo una cantidad random de tiempo
-    }*/
+}
